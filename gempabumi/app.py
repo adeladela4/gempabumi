@@ -1,13 +1,19 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 st.set_page_config(
-    page_title="Gempa Bumi Dunia",)
+    page_title="Gempa Bumi Dunia",
+)
 
 st.title("Gempa Bumi Dunia")
 st.write("Visualisasi data gempa bumi berdasarkan kekuatan dan lokasi.")
 
-data = pd.read_csv("all_month.csv")
+# Membaca file CSV yang berada satu folder dengan app.py
+BASE_DIR = Path(__file__).resolve().parent
+csv_path = BASE_DIR / "all_month.csv"
+
+data = pd.read_csv(csv_path)
 
 # Informasi utama
 col1, col2 = st.columns(2)
